@@ -1,15 +1,32 @@
-# Oblodai MCP
+<div align="center">
 
-Let an AI assistant integrate [Oblodai](https://oblodai.com) crypto payments for you — or run your
-store with you. Oblodai hosts a [Model Context Protocol](https://modelcontextprotocol.io) server
-that Claude, Cursor, VS Code, ChatGPT and any other MCP client can connect to. There is nothing to
-install.
+<a href="https://oblodai.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/oblodai/.github/main/brand/logo-white.svg">
+    <img src="https://raw.githubusercontent.com/oblodai/.github/main/brand/logo-black.svg" alt="oblodai" height="52">
+  </picture>
+</a>
+
+<h3>Official MCP server for the <a href="https://oblodai.com">oblodai</a> payment gateway</h3>
+
+Let Claude, Cursor, VS Code or ChatGPT integrate payments and run your store — nothing to install.
+
+<img src="https://img.shields.io/badge/MCP-2026--07--28%20%7C%202025--11--25-000000?style=flat-square" alt="MCP revisions">
+<img src="https://img.shields.io/badge/transport-Streamable%20HTTP-000000?style=flat-square" alt="Streamable HTTP">
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-000000?style=flat-square" alt="License: MIT"></a>
+
+[Documentation](https://docs.oblodai.com) · [Dashboard](https://my.oblodai.com) · [Read in Russian →](README.ru.md)
+
+</div>
+
+---
+
+The official [Model Context Protocol](https://modelcontextprotocol.io) server of the **Oblodai**
+payment gateway. Oblodai hosts it; point your AI assistant at one address:
 
 ```
 https://mcp.oblodai.com/mcp
 ```
-
-Streamable HTTP; MCP revisions 2026-07-28 and 2025-11-25 back to 2024-11-05.
 
 - **Without an API key** it is a reference: search the whole API, read every operation and
   webhook event, and get ready-to-run examples for all eight Oblodai SDKs. Enough to write the
@@ -20,10 +37,14 @@ Streamable HTTP; MCP revisions 2026-07-28 and 2025-11-25 back to 2024-11-05.
 
 Anything that moves money or changes settings is confirmed first (see [Safety](#safety)).
 
-## Connect
+## Where to get keys
 
-The key goes in the `Authorization` header as `Bearer <public_id>:<secret>`. Leave the header out
-for the reference mode.
+A merchant has **one API key**, issued in the [dashboard](https://my.oblodai.com) → **API keys**: a
+public id and a secret. The server takes it in the `Authorization` header as
+`Bearer <public_id>:<secret>`; leave the header out for the reference mode. The key's own role
+decides what the assistant may do — give it a read-only key if it only needs to look.
+
+## Connect
 
 ### Claude Code
 
@@ -58,8 +79,7 @@ custom header get the reference mode.
 
 ### Read-only
 
-Add the header `X-Oblodai-Mcp-Read-Only: 1` to hide every operation that changes something. A
-key with a read-only role is safer still: the key's own role decides what it may do.
+Add the header `X-Oblodai-Mcp-Read-Only: 1` to hide every operation that changes something.
 
 ## What it offers
 
@@ -117,3 +137,7 @@ The server is generated from the Oblodai API contract, so it always matches the 
 [.NET](https://github.com/oblodai/oblodai-dotnet) ·
 [Ruby](https://github.com/oblodai/oblodai-ruby) ·
 [Rust](https://github.com/oblodai/oblodai-rust)
+
+## License
+
+MIT — see [LICENSE](LICENSE).
